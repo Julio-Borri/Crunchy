@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, IconButton, makeStyles } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
-import navigationLinks from '../../constants/navigationLinks';
+import { navigationLinks } from '../../constants/navigationLinks';
 
 const useStyles = makeStyles(() => ({
   linksContainer: {
@@ -16,34 +16,23 @@ const useStyles = makeStyles(() => ({
     width: '30%',
     display: 'flex',
     justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   links: {
     textDecoration: 'none',
-    transition: 'all 1s',
-    position: 'relative',
-    '&::before, &::after': {
-      content: '""',
-      position: 'absolute',
-      width: '0%',
-      height: '100%',
-      borderBottom: '2px solid white',
-      transition: 'width 0.3s ease',
-      bottom: '0',
-      right: '50%',
-    },
-    '&:hover::before, &:hover::after': {
-      width: '40%',
-      transition: 'width .2s ease',
-    },
-    '&::after': {
-      left: '50%',
+    transition: 'all 0.3s',
+    border: '2px solid transparent',
+    '& button:hover': {
+      backgroundColor: 'rgba(255,255,255, 0.2)',
     },
   },
   button: {
     color: 'white',
+    height: '100%',
+    minHeight: '46px',
   },
   selected: {
-    '& span:first-of-type': {},
+    borderBottom: '2px solid white',
   },
 }));
 
@@ -68,15 +57,25 @@ const NavbarNavigation = () => {
         ))}
       </div>
       <div className={classes.socialContainer}>
-        <a href='https://www.instagram.com/crunchy_bv/' target='_blank'>
-          <IconButton className={classes.button} component='span'>
+        <a
+          href='https://www.instagram.com/crunchy_bv/'
+          target='_blank'
+          rel='noopener noreferrer'
+          className={classes.links}
+        >
+          <Button className={classes.button}>
             <InstagramIcon />
-          </IconButton>
+          </Button>
         </a>
-        <a href='https://www.instagram.com/crunchy_bv/' target='_blank'>
-          <IconButton className={classes.button} component='span'>
+        <a
+          href='https://www.instagram.com/crunchy_bv/'
+          target='_blank'
+          rel='noopener noreferrer'
+          className={classes.links}
+        >
+          <Button className={classes.button}>
             <WhatsAppIcon />
-          </IconButton>
+          </Button>
         </a>
       </div>
     </>

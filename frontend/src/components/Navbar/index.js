@@ -8,9 +8,19 @@ import NavbarMenu from './NavbarMenu';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    height: '50px',
+    minHeight: '50px',
   },
   appBar: {
+    height: '50px',
     background: 'linear-gradient(to right, #5a3f37, #2c7744)',
+  },
+  toolBar: {
+    minHeight: '50px',
+    '& div:first-child': {
+      height: '50px',
+      minHeight: '50px',
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -43,7 +53,7 @@ const Navbar = () => {
   return (
     <div className={classes.root}>
       <AppBar position='static' className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <Grid container>
             <Grid item xs={6} sm={3} className={classes.logoGrid}>
               <LogoText />

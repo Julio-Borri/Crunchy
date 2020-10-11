@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import SearchIcon from '@material-ui/icons/Search';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {
   IconButton,
   ListItemIcon,
@@ -14,15 +10,23 @@ import {
 } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 
-const useStyles = makeStyles(() => ({
+import { navigationLinks, socialLinks } from '../../constants/navigationLinks';
+
+const useStyles = makeStyles((theme) => ({
   menuButton: {
-    minHeight: '64px',
+    minHeight: '50px',
   },
   menuStyle: {
-    width: '100%',
+    '& .MuiPaper-root': {
+      minWidth: '100vw',
+      left: '0px !important',
+      borderRadius: '0px',
+      backgroundColor: 'rgba(255,255,255, 0.9)',
+    },
   },
   links: {
     textDecoration: 'none',
+    color: theme.palette.text.primary,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -68,33 +72,34 @@ const NavbarMenu = () => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center',
+          horizontal: 'left',
         }}
       >
-        <MenuItem>
-          <NavLink to='/' className={classes.links}>
-            <ListItemIcon>
-              <HomeIcon fontSize='small' />
-            </ListItemIcon>
-            <ListItemText primary='Inicio' />
-          </NavLink>
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <SearchIcon fontSize='small' />
-          </ListItemIcon>
-          <ListItemText primary='Productos' />
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <ShoppingCartIcon fontSize='small' />
-          </ListItemIcon>
-          <ListItemText primary='Comprar' />
-        </MenuItem>
+        {navigationLinks.map((link) => (
+          <MenuItem key={link.label} onClick={handleClose}>
+            <NavLink to={link.path} className={classes.links}>
+              <ListItemIcon>{link.icon}</ListItemIcon>
+              <ListItemText primary={link.label} />
+            </NavLink>
+          </MenuItem>
+        ))}
+        {socialLinks.map((link) => (
+          <MenuItem key={link.label}>
+            <a
+              href={link.path}
+              target='_blank'
+              rel='noopener noreferrer'
+              className={classes.links}
+            >
+              <ListItemIcon>{link.icon}</ListItemIcon>
+              <ListItemText primary={link.label} />
+            </a>
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );
