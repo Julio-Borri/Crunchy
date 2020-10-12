@@ -13,7 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     height: '50px',
-    background: 'linear-gradient(to right, #5a3f37, #2c7744)',
+    background: `linear-gradient(
+      to right, 
+      ${theme.palette.common.black}, 
+      ${theme.palette.primary.main}
+    )`,
   },
   toolBar: {
     minHeight: '50px',

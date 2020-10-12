@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import HomeScreen from '../views/HomeScreen';
 import ProductsScreen from '../views/ProductsScreen';
 import ShopScreen from '../views/ShopScreen';
+import LoginScreen from '../views/LoginScreen';
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,9 @@ export const AppRouter = () => {
         </Route>
         <Route path='/shop'>
           <ShopScreen />
+        </Route>
+        <Route path='/login'>
+          <LoginScreen />
         </Route>
         <Route path='/'>
           <HomeScreen />
