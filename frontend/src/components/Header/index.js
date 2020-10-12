@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 'calc(100vh - 50px)',
     background: `linear-gradient(
-      to right, 
-      rgba(90, 63, 55, 0.5), 
-      rgba(44, 119, 68,0.5)), 
+      to right,
+      rgb(0,0,0,0.8),
+      rgb(97, 111, 57, 0.8)), 
       url(${backgroundImg})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
